@@ -14,13 +14,12 @@ namespace ICT13580031A2.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-			var dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-			dbPath = System.IO.Path.Combine(dbPath, "myshop.db3");
+            var dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-			LoadApplication(new App(dbPath));
+            dbPath = System.IO.Path.Combine(dbPath, "myshop.db3");
 
+            LoadApplication(new App(dbPath));
 
             return base.FinishedLaunching(app, options);
-        }
     }
 }
