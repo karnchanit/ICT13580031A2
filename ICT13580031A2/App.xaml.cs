@@ -4,35 +4,35 @@ using Xamarin.Forms;
 namespace ICT13580031A2
 {
     public partial class App : Application
-    {
-        public static Dbhelper Dbhelper {get;set;}
+	{
+		public static DbHelper DbHelper
+		{ get; set; }
+
         public App()
         {
             InitializeComponent();
         }
+		public App(string dbPath)
+		{
+			InitializeComponent();
+			DbHelper = new DbHelper(dbPath);
 
-        public App(string dbPath)
-        {
-            InitializeComponent();
+			MainPage = new NavigationPage(new MainPage());
+		}
 
-            Dbhelper = new Dbhelper(dbPath);
+		protected override void OnStart()
+		{
+			// Handle when your app starts
+		}
 
-            MainPage = new NavigationPage(new MainPage());
-        }
+		protected override void OnSleep()
+		{
+			// Handle when your app sleeps
+		}
 
-        protected override void OnStart()
-        {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
-    }
+		protected override void OnResume()
+		{
+			// Handle when your app resumes
+		}
+	}
 }
