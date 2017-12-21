@@ -5,7 +5,7 @@ namespace ICT13580031A2.Models
     public class Product
     {
 		[PrimaryKey, AutoIncrement]
-		public int id { get; set; }
+		public int Id { get; set; }
 
 		[NotNull]
 		[MaxLength(200)]
