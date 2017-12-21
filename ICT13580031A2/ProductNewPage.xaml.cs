@@ -6,42 +6,75 @@ using Xamarin.Forms;
 namespace ICT13580031A2
 {
     public partial class ProductNewPage : ContentPage
-    {
-        public ProductNewPage()
-        {
-            InitializeComponent();
-            saveButton.Clicked += SaveButton_Clicked;
-            cancelButton.Clicked += CancelButton_Clicked;
+	{
 
-			categoryPicker.Items.Add("อาหาร");
-			categoryPicker.Items.Add("ตุ๊กตา");
-			categoryPicker.Items.Add("เสื้อผ้า");
-			categoryPicker.Items.Add("รองเท้า");
+        Product product;
+
+        public ProductNewPage(Product product = null)
+		{
+			InitializeComponent();
+
+            this.product = product;
+
+			yes.Clicked += Yes_Clicked;
+			not.Clicked += Can_Clicked;
+			
+			catigory.Items.Add("เสื้อ");
+			catigory.Items.Add("กางเกง");
+			catigory.Items.Add("กระโปรง");
+			catigory.Items.Add("กระเป๋า");
+			catigory.Items.Add("หมวก");
+			catigory.Items.Add("รองเท้า");
+
+            if (product != null)
+            {
+                titleLabel.Text = "แก้ไขข้อมูลสินค้า";
+                name.Text = product.Name;
+                ditel.Text = product.Descriptions;
+                catigory.SelectedItem = product.Category;
+                sellproduct.Text = product.ProductPrice.ToString();
+                sell.Text = product.sellPrice.ToString();
+                num.Text = product.Strock.ToString();
+            }
 
 		}
 
-        async void SaveButton_Clicked(object sender, EventArgs e)
-        {
-            var isOk = await DisplayAlert("ยืนยัน", "คุณต้องการบันทึกใช่หรือไม่", "ใช่", "ไม่ใช่");
+		async void Yes_Clicked(object sender, EventArgs e)
+		{
+			var isYes = await DisplayAlert("ยืนยัน", "คุณต้องการบันทึกใช่หรือไม่", "ใช่", "ไม่ใช่");
+			if (isYes)
+			{
+                if (product == null)
+                {
+                    product = new Product();
+                    product.Name = name.Text;
+                    product.Descriptions = ditel.Text;
+                    product.Category = catigory.SelectedItem.ToString();
+                    product.ProductPrice = decimal.Parse(sellproduct.Text);
+                    product.sellPrice = decimal.Parse(sell.Text);
+                    product.Strock = int.Parse(num.Text);
+                    var Id = App.DbHelper.AddProduct(product);
+                    await DisplayAlert("บันทึกสำเร็จ", "รหัสสินค้าของท่านคือ #" + Id, "ตกลง");
 
-            if (isOk)
-            {
-                var product = new Product();
-                product.Name = nameEntry.Text;
-                product.Descrpition = descriptionEditor.Text;
-                product.ProductPrice = decimal.Parse(productPriceEntry.Text);
-                product.SellPrice = decimal.Parse(sellPriceEntry.Text);
-                product.Stock = int.Parse(stockEntry.Text);
-                var id = App.Dbhelper.AddProduct(product);
-                await DisplayAlert("บันทึกสำเร็จ", "รหัสสินค้าของท่านคือ *" + id, "ตกลง");
+                }
+                else
+                {
+					product.Name = name.Text;
+					product.Descriptions = ditel.Text;
+					product.Category = catigory.SelectedItem.ToString();
+					product.ProductPrice = decimal.Parse(sellproduct.Text);
+					product.sellPrice = decimal.Parse(sell.Text);
+					product.Strock = int.Parse(num.Text);
+                    var Id = App.DbHelper.UpdateProduct(product);
+					await DisplayAlert("บันทึกสำเร็จ", "แก้ไขข้อมูลเรียบร้อย" + Id, "ตกลง");
+                }
+                await Navigation.PopModalAsync();
+			}
+		}
 
-
-            }
-        }
-
-        void CancelButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-    }
+		void Can_Clicked(object sender, EventArgs e)
+		{
+            Navigation.PopModalAsync();
+		}
+	}
 }
