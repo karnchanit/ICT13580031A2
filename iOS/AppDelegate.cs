@@ -21,5 +21,6 @@ namespace ICT13580031A2.iOS
             LoadApplication(new App(dbPath));
 
             return base.FinishedLaunching(app, options);
+        }
     }
 }
