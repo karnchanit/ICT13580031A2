@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{4F6C409D-EA58-4DC5-84CF-613B0E00CB61}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.cs">
+    <Files>
+      <File FileName="ICT13580031A2/ProductNewPage.xaml" Line="99" Column="15" />
+      <File FileName="ICT13580031A2/ProductNewPage.xaml.cs" Line="36" Column="83" />
+      <File FileName="ICT13580031A2/MainPage.xaml" Line="15" Column="15" />
+      <File FileName="ICT13580031A2/MainPage.xaml.cs" Line="18" Column="58" />
+      <File FileName="ICT13580031A2/App.xaml.cs" Line="11" Column="35" />
+      <File FileName="iOS/AppDelegate.cs" Line="19" Column="13" />
+      <File FileName="Droid/MainActivity.cs" Line="28" Column="37" />
+      <File FileName="ICT13580031A2/Helpers/Dbhelper.cs" Line="19" Column="33" />
+      <File FileName="ICT13580031A2/Models/Product.cs" Line="8" Column="15" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ICT13580031A2.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.623BAB3F-0DC1-45AF-A769-3CC8FF47FB7E">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam />
+  </MonoDevelop.Ide.ItemProperties.ICT13580031A2.iOS>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
